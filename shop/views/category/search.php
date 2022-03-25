@@ -13,7 +13,7 @@ use yii\widgets\LinkPager;
         <div class="row">
             <div class="col-xl-12">
                 <div class="breadcrumb-text text-center">
-                    <h1><?=$category->name?> </h1>
+                    <h1>Поиск по запросу: <?= Html::encode($q)?> </h1>
                     <ul class="breadcrumb-menu">
                         <li><a href="/">Главная</a></li>
                         <li><span>shop</span></li>
@@ -30,9 +30,7 @@ use yii\widgets\LinkPager;
     <div class="container">
         <div class="row">
             <div class="col-xl-8 col-lg-8">
-                <div class="shop-banner mb-50">
-                    <img src="/img/bg/shop-banner.jpg" alt="">
-                </div>
+
                 <!-- tab filter -->
                 <div class="row mb-10">
                     <div class="col-xl-5 col-lg-6 col-md-6">
@@ -108,7 +106,7 @@ use yii\widgets\LinkPager;
                                         <div class="product-meta">
                                             <div class="pro-price">
                                                 <span><?= $product->price ?> USD</span>
-                                                <span class="old-price"><?=$product->old_price?> USD</span>
+                                                <span class="old-price"><?= $product->old_price ?> USD</span>
                                             </div>
                                         </div>
                                         <div class="product-wishlist">
@@ -122,7 +120,7 @@ use yii\widgets\LinkPager;
                                 <?php endif; ?>
                                     <?php endforeach; ?>  
                                  <?php  else:?>
-                                    <h2>Товаров пока нет</h2>
+                                    <h2>Ничего не найдено </h2>
                                 <?php endif; ?>
                         </div>
                     </div>

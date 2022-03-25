@@ -121,11 +121,13 @@ use yii\helpers\Html;
                             <div class="product-tab-content">
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="product-slider owl-carousel">
-                                            <?php if(!empty($new)) : ?>
-                                            <div class="pro-item">
-                                            <?php $i=0; foreach($new as $n) : ?>
+                                      <div class="product-slider owl-carousel"> 
+                                      <?php $count=count($new); $i=0;foreach($new as $n):  ?>
+                                                <?php if($i%3==0): ?> 
+                                                   <div class="pro<?php if($i == 0) echo '-item' ?>">
+                                                <?php endif; ?>
                                                 <div class="product-wrapper mb-50">
+
                                                     <div class="product-img mb-25">
                                                         <a href="product-details.html">
                                                             <?= Html::img("@web/img/products/{$n->img}",['alt' => $n->name])?>
@@ -150,6 +152,7 @@ use yii\helpers\Html;
                                                             <?php endif; ?>
                                                             
                                                         </div>
+                                                        
                                                     </div>
                                                     <div class="product-content">
                                                         <div class="pro-cat mb-10">
@@ -162,23 +165,20 @@ use yii\helpers\Html;
                                                         <div class="product-meta">
                                                             <div class="pro-price">
                                                                 <span><?= $n->price?> USD</span>
-                                                                <span class="old-price">$230.00 USD</span>
+                                                                <span class="old-price"><?= $n->old_price ?> USD</span>
                                                             </div>
                                                         </div>
                                                         <div class="product-wishlist">
                                                             <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
                                                         </div>
                                                     </div>
+                                                    <?php if($i % 3 == 0): ?>
+                                               
                                                 </div>
-                                                <?php $i++ ?>
-                                                <?php if($i % 3 ==0): ?>
-                                                <div class="clearfix"></div>
                                                 <?php endif; ?>
-                                                <?php endforeach ; ?>
                                             </div>
-                                            <?php endif; ?>   
-                                        </div>
-
+                                            <?php endforeach ; ?> 
+                                        </div> 
                                 </div>
                             </div>
                         </div>

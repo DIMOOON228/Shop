@@ -10,6 +10,7 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use yii\rest\UrlRule;
 
 AppAsset::register($this);
 ?>
@@ -201,8 +202,8 @@ AppAsset::register($this);
                         <div class="col-xl-2 col-lg-6 col-md-6 col-5 col-sm-7 pl-0">
                             <div class="header-right f-right">
                                 <ul>
-                                    <li class="search-btn">
-                                        <a class="search-btn nav-search search-trigger" href="#"><i class="fas fa-search"></i></a>
+                                    <li class="search-btn" action="<?= \yii\helpers\Url::to(['category/search']) ?>">
+                                        <a class="search-btn nav-search search-trigger"  href="#"><i class="fas fa-search"></i></a>
                                     </li>
                                     <li class="login-btn"><a href="login.html"><i class="far fa-user"></i></a></li>
                                     <li class="d-shop-cart"><a href="#"><i class="flaticon-shopping-cart"></i> <span class="cart-count">3</span></a>
@@ -406,9 +407,9 @@ AppAsset::register($this);
         <div class="search-inner">
             <i class="fas fa-times search-close" id="search-close"></i>
             <div class="search-cell">
-                <form method="get">
+                <form method="get"  action=" <?= \yii\helpers\Url::to(['category/search']) ?>">
                     <div class="search-field-holder">
-                        <input type="search" class="main-search-input" placeholder="Search Entire Store...">
+                        <input type="search" class="main-search-input" name = "q" placeholder="Search Entire Store... ">
                     </div>
                 </form>
             </div>

@@ -8,7 +8,7 @@ use yii\widgets\LinkPager;
 <main>
 
 <!-- breadcrumb-area-start -->
-<section class="breadcrumb-area" data-background="img/bg/page-title.png">
+
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -22,7 +22,7 @@ use yii\widgets\LinkPager;
             </div>
         </div>
     </div>
-</section>
+
 <!-- breadcrumb-area-end -->
 
 <!-- shop-area start -->
@@ -129,8 +129,7 @@ use yii\widgets\LinkPager;
                         </div>
 
                         <div class="product-desc variant-item">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                            <p><?= $product->content ?></p>
                         </div>
 
                         <div class="product-info-list variant-item">
@@ -144,14 +143,14 @@ use yii\widgets\LinkPager;
 
                         <div class="product-action-details variant-item">
                             <div class="product-details-action">
-                                <form action="#">
+                                <form action="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" >
                                     <div class="plus-minus">
                                         <div class="cart-plus-minus"><input type="text" value="1" /></div>
                                     </div>
                                     <button class="details-action-icon" type="submit"><i class="fas fa-heart"></i></button>
                                     <button class="details-action-icon" type="submit"><i class="fas fa-hourglass"></i></button>
                                     <div class="details-cart mt-40">
-                                        <button class="btn theme-btn">purchase now</button>
+                                    <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" ><button data-id="<?=$product->id?>"  class="btn theme-btn add-to-cart" >Оформить заказ</button></a>
                                     </div>
                                 </form>
                             </div>
@@ -182,9 +181,6 @@ use yii\widgets\LinkPager;
                                 occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
                                 unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
                                 illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                                ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="profile6" role="tabpanel" aria-labelledby="profile-tab6">
@@ -294,17 +290,20 @@ use yii\widgets\LinkPager;
             <div class="row">
                 <div class="col-xl-12">
                     <div class="area-title text-center mb-50">
-                        <h2>Releted Products</h2>
+                        <h2>Новинки</h2>
                         <p>Browse the huge variety of our products</p>
                     </div>
                 </div>
             </div>
             <div class="product-slider-2 owl-carousel">
-                <div class="pro-item">
+                <?php $count=count($new); $i=0;foreach($new as $n):  ?>
+                <?php if($i % 3 == 0): ?> 
+                <div class=" pro<?php if($i == 0) echo '-item' ?>">
+                <?php endif; ?>
                     <div class="product-wrapper">
                         <div class="product-img mb-25">
                             <a href="product-details.html">
-                                <img src="/img/product/pro4.jpg" alt="">
+                            <?= Html::img("@web/img/products/{$n->img}",['alt' => $n->name])?>
                                 <img class="secondary-img" src="/img/product/pro5.jpg" alt="">
                             </a>
                             <div class="product-action text-center">
@@ -325,188 +324,23 @@ use yii\widgets\LinkPager;
                                 <a href="shop.html">furniture</a>
                             </div>
                             <h4>
-                                <a href="product-details.html">Raglan Baseball Style shirt</a>
+                            <a href="<?= yii\helpers\Url::to(['product/view','id'=>$n->id]) ?>"><?= $n->name ?></a>
                             </h4>
                             <div class="product-meta">
                                 <div class="pro-price">
-                                    <span>$119.00 USD</span>
-                                    <span class="old-price">$230.00 USD</span>
+                                    <span>$<?= $n->price ?>USD</span>
+                                    <span class="old-price">$<?= $n->old_price ?> USD</span>
                                 </div>
                             </div>
                             <div class="product-wishlist">
                                 <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
                             </div>
                         </div>
-                    </div>
+                        <?php if($i % 3 == 0): ?>
+                        </div>
+                    <?php endif; ?>  
                 </div>
-                <div class="pro-item">
-                    <div class="product-wrapper">
-                        <div class="product-img mb-25">
-                            <a href="product-details.html">
-                                <img src="/img/product/pro5.jpg" alt="">
-                                <img class="secondary-img" src="/img/product/pro6.jpg" alt="">
-                            </a>
-                            <div class="product-action text-center">
-                                <a href="#" title="Shoppingb Cart">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                                <a href="#" title="Quick View">
-                                    <i class="flaticon-eye"></i>
-                                </a>
-                                <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                    <i class="flaticon-compare"></i>
-                                </a>
-                            </div>
-                            <div class="sale-tag">
-                                <span class="new">new</span>
-                                <span class="sale">sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="pro-cat mb-10">
-                                <a href="shop.html">decor, </a>
-                                <a href="shop.html">furniture</a>
-                            </div>
-                            <h4>
-                                <a href="product-details.html">Raglan Baseball Style shirt</a>
-                            </h4>
-                            <div class="product-meta">
-                                <div class="pro-price">
-                                    <span>$119.00 USD</span>
-                                    <span class="old-price">$230.00 USD</span>
-                                </div>
-                            </div>
-                            <div class="product-wishlist">
-                                <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pro-item">
-                    <div class="product-wrapper">
-                        <div class="product-img mb-25">
-                            <a href="product-details.html">
-                                <img src="/img/product/pro7.jpg" alt="">
-                                <img class="secondary-img" src="/img/product/pro8.jpg" alt="">
-                            </a>
-                            <div class="product-action text-center">
-                                <a href="#" title="Shoppingb Cart">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                                <a href="#" title="Quick View">
-                                    <i class="flaticon-eye"></i>
-                                </a>
-                                <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                    <i class="flaticon-compare"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="pro-cat mb-10">
-                                <a href="shop.html">decor, </a>
-                                <a href="shop.html">furniture</a>
-                            </div>
-                            <h4>
-                                <a href="product-details.html">Raglan Baseball Style shirt</a>
-                            </h4>
-                            <div class="product-meta">
-                                <div class="pro-price">
-                                    <span>$119.00 USD</span>
-                                    <span class="old-price">$230.00 USD</span>
-                                </div>
-                            </div>
-                            <div class="product-wishlist">
-                                <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pro-item">
-                    <div class="product-wrapper">
-                        <div class="product-img mb-25">
-                            <a href="product-details.html">
-                                <img src="/img/product/pro9.jpg" alt="">
-                                <img class="secondary-img" src="/img/product/pro10.jpg" alt="">
-                            </a>
-                            <div class="product-action text-center">
-                                <a href="#" title="Shoppingb Cart">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                                <a href="#" title="Quick View">
-                                    <i class="flaticon-eye"></i>
-                                </a>
-                                <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                    <i class="flaticon-compare"></i>
-                                </a>
-                            </div>
-                            <div class="sale-tag">
-                                <span class="new">new</span>
-                                <span class="sale">sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="pro-cat mb-10">
-                                <a href="shop.html">decor, </a>
-                                <a href="shop.html">furniture</a>
-                            </div>
-                            <h4>
-                                <a href="product-details.html">Raglan Baseball Style shirt</a>
-                            </h4>
-                            <div class="product-meta">
-                                <div class="pro-price">
-                                    <span>$119.00 USD</span>
-                                    <span class="old-price">$230.00 USD</span>
-                                </div>
-                            </div>
-                            <div class="product-wishlist">
-                                <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pro-item">
-                    <div class="product-wrapper">
-                        <div class="product-img mb-25">
-                            <a href="product-details.html">
-                                <img src="/img/product/pro1.jpg" alt="">
-                                <img class="secondary-img" src="/img/product/pro11.jpg" alt="">
-                            </a>
-                            <div class="product-action text-center">
-                                <a href="#" title="Shoppingb Cart">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                                <a href="#" title="Quick View">
-                                    <i class="flaticon-eye"></i>
-                                </a>
-                                <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                    <i class="flaticon-compare"></i>
-                                </a>
-                            </div>
-                            <div class="sale-tag">
-                                <span class="new">new</span>
-                                <span class="sale">sale</span>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="pro-cat mb-10">
-                                <a href="shop.html">decor, </a>
-                                <a href="shop.html">furniture</a>
-                            </div>
-                            <h4>
-                                <a href="product-details.html">Raglan Baseball Style shirt</a>
-                            </h4>
-                            <div class="product-meta">
-                                <div class="pro-price">
-                                    <span>$119.00 USD</span>
-                                    <span class="old-price">$230.00 USD</span>
-                                </div>
-                            </div>
-                            <div class="product-wishlist">
-                                <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>  
             </div>
         </div>
     </section>
