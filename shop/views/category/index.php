@@ -168,6 +168,9 @@ use yii\helpers\Html;
                                                                 <span class="old-price"><?= $n->old_price ?> USD</span>
                                                             </div>
                                                         </div>
+        
+                                                        <a href="<?=\yii\helpers\Url::to(['cart/add','id'=>$n->id])?>"><button data-id="<?= $n->id?>" class="btn theme-btn add-to-cart" >купить</button></a>
+                                                        </form>
                                                         <div class="product-wishlist">
                                                             <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
                                                         </div>

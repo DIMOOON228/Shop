@@ -143,14 +143,14 @@ use yii\widgets\LinkPager;
 
                         <div class="product-action-details variant-item">
                             <div class="product-details-action">
-                                <form action="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" >
+                                <form action="*" >
                                     <div class="plus-minus">
                                         <div class="cart-plus-minus"><input type="text" value="1" /></div>
                                     </div>
                                     <button class="details-action-icon" type="submit"><i class="fas fa-heart"></i></button>
                                     <button class="details-action-icon" type="submit"><i class="fas fa-hourglass"></i></button>
                                     <div class="details-cart mt-40">
-                                    <a href="<?= \yii\helpers\Url::to(['cart/add','id'=>$product->id])?>" ><button data-id="<?=$product->id?>"  class="btn theme-btn add-to-cart" >Оформить заказ</button></a>
+                                    <button   class="btn theme-btn " >Оформить заказ</button>
                                     </div>
                                 </form>
                             </div>

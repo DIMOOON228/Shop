@@ -211,7 +211,7 @@ AppAsset::register($this);
                                             <li>
                                                 <div class="cart-img">
                                                     <a href="product-details.html">
-                                                        <img src="img/product/pro1.jpg" alt="" />
+                                                        <img src="/img/product/pro1.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="cart-content">
@@ -234,7 +234,7 @@ AppAsset::register($this);
                                             <li>
                                                 <div class="cart-img">
                                                     <a href="product-details.html">
-                                                        <img src="img/product/pro2.jpg" alt="" />
+                                                        <img src="/img/product/pro2.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="cart-content">
@@ -257,7 +257,7 @@ AppAsset::register($this);
                                             <li>
                                                 <div class="cart-img">
                                                     <a href="product-details.html">
-                                                        <img src="img/product/pro3.jpg" alt="" />
+                                                        <img src="/img/product/pro3.jpg" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="cart-content">
@@ -312,14 +312,14 @@ AppAsset::register($this);
                         <div class="col-xl-3 col-lg-5 col-md-6 ">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="img/logo/footer-logo.png" alt=""></a>
+                                    <a href="index.html"><img src="/img/logo/footer-logo.png" alt=""></a>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore mag na
                                 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                 </p>
                                 <div class="footer-time d-flex mt-30">
                                     <div class="time-icon">
-                                        <img src="img/icon/time.png" alt="">
+                                        <img src="/img/icon/time.png" alt="">
                                     </div>
                                     <div class="time-text">
                                         <span>Got Questions ? Call us 24/7!</span>
@@ -370,7 +370,7 @@ AppAsset::register($this);
                         <div class="col-xl-3 col-lg-5 col-md-6">
                             <div class="footer-widget mb-40">
                                 <div class="footer-banner">
-                                    <a href="shop.html"><img src="img/banner/add.jpg" alt=""></a>
+                                    <a href="shop.html"><img src="/img/banner/add.jpg" alt=""></a>
                                 </div>
                             </div>
                         </div>

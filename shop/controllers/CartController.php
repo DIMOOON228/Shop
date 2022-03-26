@@ -13,6 +13,7 @@
             $session->open();
             $cart = new Cart();
             $cart->addToCart($product);
+            debug($session['cart']);
             $this->layout= false;
             return $this->render('cart-modal',compact('session'));
         }

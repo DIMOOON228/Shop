@@ -8,7 +8,7 @@
         $('body').delay(350).css({ 'overflow': 'visible' });
     })
     $('.add-to-cart').on('click', function(e) {
-        e.preventDefault();
+        e.preventDefault(); //отменяю переход по ссылке
         var id = $(this).data('id');
         $.ajax({
             url: '/cart/add',
