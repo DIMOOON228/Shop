@@ -7,7 +7,7 @@ use yii\data\Pagination;
 
     class CategoryController extends AppController {
         public function actionIndex(){
-            $new = Product::find()->where(['new'=>'1'])->limit(5)->all();
+            $new = Product::find()->where(['new'=>'1'])->limit(6)->all();
             $this->setMeta('Shop');
             return $this->render('index',compact('new'));
         }

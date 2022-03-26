@@ -2,8 +2,10 @@
 
 /** @var yii\web\View $this */
 /** @var string $content */
-
+namespace yii\bootstrap4;
+use Yii;
 use app\assets\AppAsset;
+use yii\helpers\ArrayHelper;
 use app\components\MenuWidget;
 use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
@@ -312,7 +314,7 @@ AppAsset::register($this);
                         <div class="col-xl-3 col-lg-5 col-md-6 ">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="/img/logo/footer-logo.png" alt=""></a>
+                                    <a href="/"><img src="/img/logo/footer-logo.png" alt=""></a>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore mag na
                                 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -418,7 +420,18 @@ AppAsset::register($this);
 
 
 
+<?php 
+Modal::begin([
+   'title' => '<h2>Корзина</h2>',
+   'id'=>'cart',
+   'size'=>'modal-xl',
+   'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal">Продолжить покупки</button>
+   <button type="button" class="btn btn-success">Оформить заказ</button>
+   <button type="button" class="btn btn-danger onclick="clearCart()">Очистить корзину</button>'
+]);
 
+Modal::end();
+?>
 
 		<!-- JS here -->
     <?php $this->endBody() ?>

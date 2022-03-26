@@ -1,4 +1,5 @@
-//$('.lada').dcAccordion({speed: 300});
+//$('.lada').dcAccordion
+({ speed: 300 });
 
 (function($) {
     "use strict";
@@ -7,6 +8,11 @@
         $('#preloader').delay(350).fadeOut('slow');
         $('body').delay(350).css({ 'overflow': 'visible' });
     })
+
+    function showCart(cart) {
+        $('#cart .modal-body').html(cart);
+        $('#cart').modal();
+    }
     $('.add-to-cart').on('click', function(e) {
         e.preventDefault(); //отменяю переход по ссылке
         var id = $(this).data('id');
@@ -15,9 +21,9 @@
             data: { id: id },
             type: 'GET',
             success: function(res) {
-                if (!res) alert('Ohibka');
-                console.log(res);
-                //showCart(res)
+                if (!res) alert('Вы ничего не выбрали');
+                //console.log(res);
+                showCart(res);
             },
             error: function() {
                 alert('Что-то пошло не  по плану');

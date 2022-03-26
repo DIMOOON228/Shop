@@ -8,7 +8,7 @@ use yii\db\ActiveRecord;
         if(isset($_SESSION['cart'][$product->id])){
             $_SESSION['cart'][$product->id]['qty'] += $qty;
         }else{
-            $_SESSION['cart'][$product->id] = [
+            $_SESSION['cart'][$product->id]['qty'] = [
                 'qty' => $qty,
                 'name' => $product->name,
                 'price' => $product->price,

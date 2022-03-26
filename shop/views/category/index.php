@@ -129,7 +129,7 @@ use yii\helpers\Html;
                                                 <div class="product-wrapper mb-50">
 
                                                     <div class="product-img mb-25">
-                                                        <a href="product-details.html">
+                                                        <a href="<?= yii\helpers\Url::to(['product/view','id'=>$n->id]) ?>">
                                                             <?= Html::img("@web/img/products/{$n->img}",['alt' => $n->name])?>
                                                         </a>
                                                         <div class="product-action text-center">
