@@ -25,7 +25,6 @@
                 if($menu)return $menu;
             }
             $this->data=Category::find()->indexBy('id')->asArray()->all();
-            debug($this->data);
             $this->tree=$this->getTree();
             $this->menuHtml= $this->getMenuHtml($this->tree);
             //set ceche

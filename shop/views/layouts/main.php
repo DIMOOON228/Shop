@@ -21,7 +21,7 @@ AppAsset::register($this);
 <!doctype html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <html class="no-js" lang="zxx">
-    
+
     <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,7 +31,6 @@ AppAsset::register($this);
     </head>
     <body>
     <?php $this->beginBody() ?>
-
         <!-- preloader -->
         <div id="preloader">
             <div class="preloader">
@@ -40,7 +39,6 @@ AppAsset::register($this);
             </div>
         </div>
         <!-- preloader end  -->
-
         <!-- header start -->
         <header>
             <div id="header-sticky" class="header-area box-90">
@@ -133,9 +131,6 @@ AppAsset::register($this);
                                                     </ul>
                                                 </li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <a href="shop-filter.html">Products </a>
                                         </li>
                                         <li>
                                             <a href="blog.html">Blog</a>
@@ -338,9 +333,6 @@ AppAsset::register($this);
             </div>
         </div>
     </div> <!-- end fullscreen search -->
-
-
-
 <?php 
 Modal::begin([
    'title' => '<h2>Корзина</h2>',

@@ -207,29 +207,26 @@ use yii\helpers\Html;
                         </div>
                     </div>
                     <div class="row">
+                         <?php foreach($top as $t): ?>
                         <div class="col-xl-5 col-lg-5">
                             <div class="top-seller mb-50">
-                                <img src="/img/banner/top-seller/banner1.jpg" alt="">
+                            <a href="<?= yii\helpers\Url::to(['product/view','id'=>$t->id]) ?>">
+                             <?= Html::img("@web/img/products/{$t->img}",['alt' => $t->name])?>
                                 <div class="seller-box text-center">
                                     <div class="top-seller-content text-left">
-                                        <h2><a href="shop.html">Minimal Home Decor</a></h2>
+                                        <h2><a href="<?= yii\helpers\Url::to(['product/view','id'=>$t->id]) ?>"><?= $t->name ?></a></h2>
                                         <div class="pro-price mb-25">
-                                            <span>$119.00 USD</span>
-                                            <span class="old-price">$230.00 USD</span>
+                                            <span><?= $t->price ?> USD</span>
+                                            <span class="old-price"><?= $t->old_price?> USD</span>
                                         </div>
                                         <div class="top-seller-btn">
-                                            <a href="shop.html" class="btn theme-btn">Shop Now</a>
+                                        <a href="<?=\yii\helpers\Url::to(['cart/add','id'=>$n->id])?>"><button data-id="<?= $n->id?>" class="btn theme-btn add-to-cart" >купить</button></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xl-7 col-lg-7">
-                            <div class="top-seller text-right mb-50">
-                                <img src="/img/banner/top-seller/banner2.jpg" alt="">
-
-                            </div>
-                        </div>
+                       <?php endforeach; ?>
+                     </div>
                     </div>
                 </div>
             </section>
@@ -241,7 +238,7 @@ use yii\helpers\Html;
                     <div class="row">
                         <div class="col-xl-5 col-lg-12">
                             <div class="area-title mb-50">
-                                <h2>Best Sell Products</h2>
+                                <h2>Best Sale Products</h2>
                                 <p>Browse the huge variety of our products</p>
                             </div>
                         </div>
@@ -274,7 +271,7 @@ use yii\helpers\Html;
                                 <div class="tab-content" id="myTabContent1">
                                     <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="product-slider owl-carousel">
-                                        <?php $count=count($sale); $i=0;foreach($sale as $s):  ?>
+                                        <?php $count=count($sale); $i=0;foreach($sale as $s): ?>
                                                 <?php if($i%4==0): ?> 
                                                    <div class="pro<?php if($i == 0) echo '-item' ?>">
                                                 <?php endif; ?>
@@ -329,215 +326,7 @@ use yii\helpers\Html;
                                             <?php endforeach; ?>>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="product-slider owl-carousel">
-                                            <div class="pro-item">
-                                                <div class="product-wrapper mb-50">
-                                                    <div class="product-img mb-25">
-                                                        <a href="product-details.html">
-                                                            <img src="/img/product/pro2.jpg" alt="">
-                                                            <img class="secondary-img" src="/img/product/pro4.jpg" alt="">
-                                                        </a>
-                                                        <div class="product-action text-center">
-                                                            <a href="#" title="Shoppingb Cart">
-                                                                <i class="flaticon-shopping-cart"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View">
-                                                                <i class="flaticon-eye"></i>
-                                                            </a>
-                                                            <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                                                <i class="flaticon-compare"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="sale-tag">
-                                                            <span class="new">30%</span>
-                                                            <span class="sale">Sale</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <div class="pro-cat mb-10">
-                                                            <a href="shop.html">decor, </a>
-                                                            <a href="shop.html">furniture</a>
-                                                        </div>
-                                                        <h4>
-                                                            <a href="product-details.html">Minimal Troma Furniture</a>
-                                                        </h4>
-                                                        <div class="product-meta">
-                                                            <div class="pro-price">
-                                                                <span>$119.00 USD</span>
-                                                                <span class="old-price">$230.00 USD</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-wishlist">
-                                                            <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pro-item">
-                                                <div class="product-wrapper mb-50">
-                                                    <div class="product-img mb-25">
-                                                        <a href="product-details.html">
-                                                            <img src="/img/product/pro4.jpg" alt="">
-                                                            <img class="secondary-img" src="/img/product/pro8.jpg" alt="">
-                                                        </a>
-                                                        <div class="product-action text-center">
-                                                            <a href="#" title="Shoppingb Cart">
-                                                                <i class="flaticon-shopping-cart"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View">
-                                                                <i class="flaticon-eye"></i>
-                                                            </a>
-                                                            <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                                                <i class="flaticon-compare"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <div class="pro-cat mb-10">
-                                                            <a href="shop.html">decor, </a>
-                                                            <a href="shop.html">furniture</a>
-                                                        </div>
-                                                        <h4>
-                                                            <a href="product-details.html">Minimal Troma Furniture</a>
-                                                        </h4>
-                                                        <div class="product-meta">
-                                                            <div class="pro-price">
-                                                                <span>$119.00 USD</span>
-                                                                <span class="old-price">$230.00 USD</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-wishlist">
-                                                            <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pro-item">
-                                                <div class="product-wrapper mb-50">
-                                                    <div class="product-img mb-25">
-                                                        <a href="product-details.html">
-                                                            <img src="/img/product/pro3.jpg" alt="">
-                                                            <img class="secondary-img" src="/img/product/pro4.jpg" alt="">
-                                                        </a>
-                                                        <div class="product-action text-center">
-                                                            <a href="#" title="Shoppingb Cart">
-                                                                <i class="flaticon-shopping-cart"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View">
-                                                                <i class="flaticon-eye"></i>
-                                                            </a>
-                                                            <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                                                <i class="flaticon-compare"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="sale-tag">
-                                                            <span class="sale">sale</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <div class="pro-cat mb-10">
-                                                            <a href="shop.html">decor, </a>
-                                                            <a href="shop.html">furniture</a>
-                                                        </div>
-                                                        <h4>
-                                                            <a href="product-details.html">Minimal Troma Furniture</a>
-                                                        </h4>
-                                                        <div class="product-meta">
-                                                            <div class="pro-price">
-                                                                <span>$119.00 USD</span>
-                                                                <span class="old-price">$230.00 USD</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-wishlist">
-                                                            <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pro-item">
-                                                <div class="product-wrapper mb-50">
-                                                    <div class="product-img mb-25">
-                                                        <a href="product-details.html">
-                                                            <img src="/img/product/pro7.jpg" alt="">
-                                                            <img class="secondary-img" src="/img/product/pro4.jpg" alt="">
-                                                        </a>
-                                                        <div class="product-action text-center">
-                                                            <a href="#" title="Shoppingb Cart">
-                                                                <i class="flaticon-shopping-cart"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View">
-                                                                <i class="flaticon-eye"></i>
-                                                            </a>
-                                                            <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                                                <i class="flaticon-compare"></i>
-                                                            </a>
-                                                        </div>
-                                                        <div class="sale-tag">
-                                                            <span class="sale">60%</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <div class="pro-cat mb-10">
-                                                            <a href="shop.html">decor, </a>
-                                                            <a href="shop.html">furniture</a>
-                                                        </div>
-                                                        <h4>
-                                                            <a href="product-details.html">Minimal Troma Furniture</a>
-                                                        </h4>
-                                                        <div class="product-meta">
-                                                            <div class="pro-price">
-                                                                <span>$119.00 USD</span>
-                                                                <span class="old-price">$230.00 USD</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-wishlist">
-                                                            <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pro-item">
-                                                <div class="product-wrapper mb-50">
-                                                    <div class="product-img mb-25">
-                                                        <a href="product-details.html">
-                                                            <img src="/img/product/pro8.jpg" alt="">
-                                                            <img class="secondary-img" src="/img/product/pro1.jpg" alt="">
-                                                        </a>
-                                                        <div class="product-action text-center">
-                                                            <a href="#" title="Shoppingb Cart">
-                                                                <i class="flaticon-shopping-cart"></i>
-                                                            </a>
-                                                            <a href="#" title="Quick View">
-                                                                <i class="flaticon-eye"></i>
-                                                            </a>
-                                                            <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                                                <i class="flaticon-compare"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <div class="pro-cat mb-10">
-                                                            <a href="shop.html">decor, </a>
-                                                            <a href="shop.html">furniture</a>
-                                                        </div>
-                                                        <h4>
-                                                            <a href="product-details.html">Minimal Troma Furniture</a>
-                                                        </h4>
-                                                        <div class="product-meta">
-                                                            <div class="pro-price">
-                                                                <span>$119.00 USD</span>
-                                                                <span class="old-price">$230.00 USD</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-wishlist">
-                                                            <a href="#"><i class="far fa-heart" title="Wishlist"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
                                         <div class="product-slider owl-carousel">
                                             <div class="pro-item">
@@ -1044,16 +833,18 @@ use yii\helpers\Html;
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="area-title text-center mb-50">
-                                <h2>News Feeds</h2>
+                                <h2>Trend Product</h2>
                                 <p>Check it out every updates</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
+                    <?php  foreach($hits as $hit): ?>
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="latest-news mb-40">
                                 <div class="news__thumb mb-25">
-                                    <img src="/img/blog/latest/lb1.jpg" alt="">
+                                <a href="<?= yii\helpers\Url::to(['product/view','id'=>$hit->id]) ?>">
+                                      <?= Html::img("@web/img/products/{$hit->img}",['alt' => $hit->name])?>
                                 </div>
                                 <div class="news__caption white-bg">
                                     <div class="news-meta mb-15">
@@ -1061,54 +852,18 @@ use yii\helpers\Html;
                                         <span><a href="#"><i class="far fa-user"></i> Diboli</a></span>
                                         <span><a href="#"><i class="far fa-comments"></i> 23 Comments</a></span>
                                     </div>
-                                    <h2><a href="blog-details.html">Inspiration Is Under Construction Business &
-                                    Fashion 2019. In this situation we do that..</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo..</p>
+                                    <h2> <a href="<?= yii\helpers\Url::to(['product/view','id'=>$hit->id]) ?>"><?= $hit->name ?></a></h2>
+                                    <p><?= $hit->content ?></p>
+                                    <a href="<?=\yii\helpers\Url::to(['cart/add','id'=>$hit->id])?>"><button data-id="<?= $hit->id?>" class="btn theme-btn add-to-cart" >купить</button></a>
                                 </div>
                             </div>
+                          
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="latest-news mb-40">
-                                <div class="news__thumb mb-25">
-                                    <img src="/img/blog/latest/lb2.jpg" alt="">
-                                </div>
-                                <div class="news__caption white-bg">
-                                    <div class="news-meta mb-15">
-                                        <span><i class="far fa-calendar-check"></i> Sep 15, 2018 </span>
-                                        <span><a href="#"><i class="far fa-user"></i> Joly</a></span>
-                                        <span><a href="#"><i class="far fa-comments"></i> 23 Comments</a></span>
-                                    </div>
-                                    <h2><a href="blog-details.html">Inspiration Is Under Construction Business &
-                                    Fashion 2019. In this situation we do that..</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo..</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="latest-news mb-40">
-                                <div class="news__thumb mb-25">
-                                    <img src="/img/blog/latest/lb3.jpg" alt="">
-                                </div>
-                                <div class="news__caption white-bg">
-                                    <div class="news-meta mb-15">
-                                        <span><i class="far fa-calendar-check"></i> Sep 15, 2018 </span>
-                                        <span><a href="#"><i class="far fa-user"></i> Joly</a></span>
-                                        <span><a href="#"><i class="far fa-comments"></i> 23 Comments</a></span>
-                                    </div>
-                                    <h2><a href="blog-details.html">Inspiration Is Under Construction Business &
-                                    Fashion 2019. In this situation we do that..</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo..</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
                 </div>
             </section>
             <!-- latest-blog-area end -->
-
+    
             <!-- subscribe-area start -->
             <section class="subscribe-area box-105">
                 <div class="subscribe-inner black-bg pt-70 pb-20">

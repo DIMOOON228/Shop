@@ -9,8 +9,10 @@ use yii\data\Pagination;
         public function actionIndex(){
             $new = Product::find()->where(['new'=>'1'])->limit(6)->all();
             $sale = Product::find()->where(['sale'=>'1'])->limit(6)->all();
+            $hits = Product::find()->where(['hits'=>'1'])->limit(3)->all();
+            $top = Product::find()->where(['top'=>'1'])->limit(1)->all();
             $this->setMeta('Shop');
-            return $this->render('index',compact('new','sale'));
+            return $this->render('index',compact('new','sale','hits','top'));
         }
         public function actionView($id){
            // $id = Yii::$app->request->get('id');
@@ -18,7 +20,7 @@ use yii\data\Pagination;
             $category = Category::findOne($id);
            // $products = Product::find()->where(['category_id'=>$id])->all();
             $query = Product::find()->where(['category_id'=>$id]);
-            $pages = new Pagination(['totalCount'=>$query->count(),'pagesize'=>2,'forcePageParam'=>false,'pageSizeParam'=>false]);
+            $pages = new Pagination(['totalCount'=>$query->count(),'pagesize'=>6,'forcePageParam'=>false,'pageSizeParam'=>false]);
             $products = $query->offset($pages->offset)->limit($pages->limit)->all() ;
             $category = Category:: findOne($id);
             $this->setMeta($category->name,$category->keywords,$category->description);

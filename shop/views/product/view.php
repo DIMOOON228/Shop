@@ -129,7 +129,6 @@ use yii\widgets\LinkPager;
                         </div>
 
                         <div class="product-desc variant-item">
-                            <p><?= $product->content ?></p>
                         </div>
 
                         <div class="product-info-list variant-item">
@@ -175,12 +174,7 @@ use yii\widgets\LinkPager;
                     <div class="tab-content" id="myTabContent2">
                         <div class="tab-pane fade show active" id="home6" role="tabpanel" aria-labelledby="home-tab6">
                             <div class="desc-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                                unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-                                illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                <p><?= $product->content ?></p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="profile6" role="tabpanel" aria-labelledby="profile-tab6">
