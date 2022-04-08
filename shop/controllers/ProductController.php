@@ -17,12 +17,6 @@ class ProductController extends AppController{
         if(empty($product))
         throw new \yii\web\HttpException(404,'Такого продукта нет');
         return $this->render('view',compact('product','new','sale','hits'));
-
-        //$sale = Product::find()->where(['sale'=>'1'])->limit(6)->all();
-        //$this->setMeta($product->name,$product->keywords,$product->description);
-        //if(empty($product))
-        //throw new \yii\web\HttpException(404,'Такого продукта нет');
-        //return $this->render('view',compact('product','sale'));
     }
 
 }

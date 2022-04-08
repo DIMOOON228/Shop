@@ -12,7 +12,7 @@ use app\models\Category;
 
 <div class="category-form">
     
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?php //echo $form->field($model,'parent_id')->dropDownList(ArrayHelper::map(Category::find()->all(),'id','name')) ?>
 
@@ -28,6 +28,7 @@ use app\models\Category;
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

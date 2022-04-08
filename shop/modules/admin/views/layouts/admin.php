@@ -102,8 +102,6 @@ AppAsset::register($this);
         </header>
         <!-- header end -->
         <div class="container"><?=$content ?></div>
-       
-
         <!-- footer start -->
         <footer>
             <div class="footer-area box-90 pt-100 pb-60">

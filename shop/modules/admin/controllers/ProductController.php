@@ -4,7 +4,6 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\modules\admin\models\Product;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -12,7 +11,7 @@ use yii\web\UploadedFile;
 /**
  * ProductController implements the CRUD actions for Product model.
  */
-class ProductController extends Controller
+class ProductController extends AppAdminController
 {
     /**
      * @inheritDoc
@@ -87,6 +86,7 @@ class ProductController extends Controller
             }
         } else {
             $model->loadDefaultValues();
+            Yii::$app->session->setFlash('success',"Товар {$model->name} не добавлен");
         }
 
         return $this->render('create', [
@@ -105,13 +105,16 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load($this->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
             $model->image = UploadedFile::getInstance($model,'image');
             if ($model->image){
                 $model->upload();
             }
-            
+            unset($model->image);
+            $model->gallery = UploadedFile::getInstances($model,'gallery');
+            $model->uploadGallery();
+
             Yii::$app->session->setFlash('success',"Товар {$model->name} обновлен");
             return $this->redirect(['view','id'=>$model->id]);
         }else{

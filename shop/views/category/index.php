@@ -3,7 +3,6 @@
 /** @var yii\web\View $this */
 use yii\helpers\Html;
 ?>
-
  <main>
             <!-- slider-area start -->
             <section class="slider-area pos-relative">
@@ -126,11 +125,12 @@ use yii\helpers\Html;
                                                 <?php if($i%3==0): ?> 
                                                    <div class="pro<?php if($i == 0) echo '-item' ?>">
                                                 <?php endif; ?>
+                                                <?php $mainImg = $n->getImage(); ?>
                                                 <div class="product-wrapper mb-50">
-
+                                                    
                                                     <div class="product-img mb-25">
                                                         <a href="<?= yii\helpers\Url::to(['product/view','id'=>$n->id]) ?>">
-                                                            <?= Html::img("@web/img/products/{$n->img}",['alt' => $n->name])?>
+                                                        <?= Html::img($mainImg->getUrl(), ['alt' => $n->name]) ?>
                                                         </a>
                                                         <div class="product-action text-center">
                                                             <a href="#" title="Shoppingb Cart">
@@ -208,10 +208,11 @@ use yii\helpers\Html;
                     </div>
                     <div class="row">
                          <?php foreach($top as $t): ?>
+                            <?php $mainImg= $t->getImage() ?>
                         <div class="col-xl-5 col-lg-5">
                             <div class="top-seller mb-50">
                             <a href="<?= yii\helpers\Url::to(['product/view','id'=>$t->id]) ?>">
-                             <?= Html::img("@web/img/products/{$t->img}",['alt' => $t->name])?>
+                            <?= Html::img($mainImg->getUrl(), ['alt' => $n->name]) ?>
                                 <div class="seller-box text-center">
                                     <div class="top-seller-content text-left">
                                         <h2><a href="<?= yii\helpers\Url::to(['product/view','id'=>$t->id]) ?>"><?= $t->name ?></a></h2>
@@ -275,10 +276,11 @@ use yii\helpers\Html;
                                                 <?php if($i%4==0): ?> 
                                                    <div class="pro<?php if($i == 0) echo '-item' ?>">
                                                 <?php endif; ?>
+                                                <?php $mainImg=$s->getImage() ?>
                                                 <div class="product-wrapper mb-50">
                                                     <div class="product-img mb-25">
                                                     <a href="<?= yii\helpers\Url::to(['product/view','id'=>$s->id]) ?>">
-                                                            <?= Html::img("@web/img/products/{$s->img}",['alt' => $s->name])?>
+                                                            <?= Html::img($mainImg->getUrl(),['alt' => $s->name])?>
                                                         </a>
                                                         <div class="product-action text-center">
                                                             <a href="#" title="Shoppingb Cart">
@@ -840,11 +842,12 @@ use yii\helpers\Html;
                     </div>
                     <div class="row">
                     <?php  foreach($hits as $hit): ?>
+                        <?php $mainImg=$hit->getImage() ?>
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="latest-news mb-40">
                                 <div class="news__thumb mb-25">
                                 <a href="<?= yii\helpers\Url::to(['product/view','id'=>$hit->id]) ?>">
-                                      <?= Html::img("@web/img/products/{$hit->img}",['alt' => $hit->name])?>
+                                      <?= Html::img($mainImg->getUrl(),['alt' => $hit->name])?>
                                 </div>
                                 <div class="news__caption white-bg">
                                     <div class="news-meta mb-15">
@@ -853,7 +856,6 @@ use yii\helpers\Html;
                                         <span><a href="#"><i class="far fa-comments"></i> 23 Comments</a></span>
                                     </div>
                                     <h2> <a href="<?= yii\helpers\Url::to(['product/view','id'=>$hit->id]) ?>"><?= $hit->name ?></a></h2>
-                                    <p><?= $hit->content ?></p>
                                     <a href="<?=\yii\helpers\Url::to(['cart/add','id'=>$hit->id])?>"><button data-id="<?= $hit->id?>" class="btn theme-btn add-to-cart" >купить</button></a>
                                 </div>
                             </div>

@@ -12,9 +12,14 @@ mihaildev\elfinder\Assets::noConflict($this);
 ?>
 
 <div class="product-form">
-    
+<?php if(Yii::$app->session->hasFlash('success') ): ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <buuton type="button" class="close" data-dismiss="alert" aria-lable="Close"><span aria-hidden="true">&times;</span></buuton> 
+    <?php echo Yii::$app->session->getFlash('success'); ?>
+    </div>
+<?php endif; ?> 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-
+    
     <div class="form-group field-product-category_id has-success">
         <label class="control-lable" for="product-category_id">Родительская категория</label>
         <select id="product-category_id" class="form-control" name="Product[category_id]">
@@ -24,12 +29,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php /* echo  $form->field($model, 'content')->widget(CKEditor::className(),[
-    'editorOptions' => [
-        'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-        'inline' => false, //по умолчанию false
-         ],
-    ]);*/
+    <?php
     ?>
     <?php 
     echo $form->field($model, 'content')->widget(CKEditor::className(), [
@@ -47,6 +47,7 @@ mihaildev\elfinder\Assets::noConflict($this);
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'image')->fileInput() ?>
+    <?= $form->field($model, 'gallery[]')->fileInput(['multiple' => true, 'accept' => 'image/*']) ?>
 
     <?= $form->field($model, 'new')->checkbox([ '0'=>'Нет', '1'=>'Да', ], ['prompt' => '']) ?>
 

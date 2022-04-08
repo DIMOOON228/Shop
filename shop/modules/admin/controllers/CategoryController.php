@@ -3,10 +3,12 @@
 namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\Category;
+
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -103,7 +105,11 @@ class CategoryController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($model->load($this->request->post()) && $model->save()) {
+            $model->image=UploadedFile::getInstance($model,'image');
+            if ($model->image){
+                $model->upload();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -111,6 +117,7 @@ class CategoryController extends Controller
             'model' => $model,
         ]);
     }
+    
 
     /**
      * Deletes an existing Category model.

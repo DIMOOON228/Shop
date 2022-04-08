@@ -25,7 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <?php if(Yii::$app->session->hasFlash('success') ): ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <buuton type="button" class="close" data-dismiss="alert" aria-lable="Close"><span aria-hidden="true">&times;</span></buuton> 
+    <?php echo Yii::$app->session->getFlash('success'); ?>
+    </div>
+<?php endif; ?> 
+<?php $img= $model->getImage(); ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -41,7 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'old_price',
             'keywords',
             'description',
-            'img',
+            [
+                'attribute'=>'image',
+                'value' =>"<img src='{$img->getUrl()}'>",
+                'format'=>'html',
+            ],
             [
                 'attribute'=>'new',
                 'value' => !$model->new ? '<span class="text-danger">Нет</span>' : '<span class="text-success">Да</span>',

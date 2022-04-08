@@ -2,7 +2,7 @@
 
 namespace app\models;
 use yii\db\ActiveRecord;
-
+use Yii;
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
 public static function tableName()
@@ -69,9 +69,9 @@ public static function tableName()
     public function validatePassword($password)
     {
         //return $this->password === $password;
-        return \Yii::$app->security->validatePassword($password,$this->password);
+        return Yii::$app->security->validatePassword($password,$this->password);
     }
     public function generateAuthKey(){
-        $this->auth_key=\Yii::$app->security->generateRandomString();
+        $this->auth_key=Yii::$app->security->generateRandomString();
     }
 }

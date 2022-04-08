@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 ?>
-        <main>
+<main>
 
 <!-- breadcrumb-area-start -->
 <section class="breadcrumb-area" data-background="/img/bg/page-title.png">
@@ -13,9 +13,9 @@ use yii\widgets\LinkPager;
         <div class="row">
             <div class="col-xl-12">
                 <div class="breadcrumb-text text-center">
-                    <h1>Our Shop</h1>
+                    <h1><?= $category->name ?></h1>
                     <ul class="breadcrumb-menu">
-                        <li><a href="index.html">home</a></li>
+                        <li><a href="/">home</a></li>
                         <li><span>shop</span></li>
                     </ul>
                 </div>
@@ -29,9 +29,9 @@ use yii\widgets\LinkPager;
 <section class="shop-area pt-100 pb-100">
     <div class="container">
         <div class="row">
+
             <div class="col-xl-8 col-lg-8">
                 <div class="shop-banner mb-50">
-                    <img src="/img/bg/shop-banner.jpg" alt="">
                 </div>
                 <!-- tab filter -->
                 <div class="row mb-10">
@@ -65,17 +65,19 @@ use yii\widgets\LinkPager;
                         </div>
                     </div>
                 </div>
+              
                 <!-- tab content -->
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row">
                     <?php if(!empty($products)): ?>
                         <?php $i=0;foreach($products as $product): ?>
+                            <?php $mainImg = $product->getImage();?>
                             <div class="col-lg-6 col-md-6">
                                 <div class="product-wrapper mb-50">
                                     <div class="product-img mb-25">
                                     <a href="<?= yii\helpers\Url::to(['product/view','id'=>$product->id]) ?>">
-                                      <?= Html::img("@web/img/products/{$product->img}",['alt' => $product->name])?>
+                                    <?= Html::img($mainImg->getUrl(),['alt' => $product->name])?>
                                         </a>
                                         <div class="product-action text-center">
                                             <a href="#" title="Shoppingb Cart">
@@ -490,7 +492,7 @@ use yii\widgets\LinkPager;
                         </div>
                     </div>
                 </div>
-            </div>
+         </div>
             <div class="col-xl-4 col-lg-4">
                 <div class="sidebar-box">
                     <div class="shop-widget">

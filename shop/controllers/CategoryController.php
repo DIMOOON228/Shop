@@ -18,11 +18,12 @@ use yii\data\Pagination;
            // $id = Yii::$app->request->get('id');
            
             $category = Category::findOne($id);
+            
            // $products = Product::find()->where(['category_id'=>$id])->all();
             $query = Product::find()->where(['category_id'=>$id]);
             $pages = new Pagination(['totalCount'=>$query->count(),'pagesize'=>6,'forcePageParam'=>false,'pageSizeParam'=>false]);
             $products = $query->offset($pages->offset)->limit($pages->limit)->all() ;
-            $category = Category:: findOne($id);
+      
             $this->setMeta($category->name,$category->keywords,$category->description);
             if(empty($category))
             throw new \yii\web\HttpException(404,'Такой категории нет');

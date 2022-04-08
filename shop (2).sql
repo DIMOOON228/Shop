@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Час створення: Квт 07 2022 р., 17:38
+-- Час створення: Квт 08 2022 р., 23:43
 -- Версія сервера: 5.7.33
 -- Версія PHP: 7.2.34
 
@@ -32,24 +32,25 @@ CREATE TABLE `category` (
   `parent_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
   `keywords` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL
+  `description` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT 'no-image.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп даних таблиці `category`
 --
 
-INSERT INTO `category` (`id`, `parent_id`, `name`, `keywords`, `description`) VALUES
-(1, 0, 'BMW', NULL, NULL),
-(2, 0, 'Mersedes-Benz', NULL, NULL),
-(3, 0, 'Chevrolet', NULL, NULL),
-(6, 0, 'Audi', NULL, NULL),
-(8, 1, '3-series', '1111', '222222'),
-(9, 1, '5-series', NULL, NULL),
-(10, 2, 'c-class', NULL, NULL),
-(12, 2, 'e-class', NULL, NULL),
-(14, 3, 'Cruze', 'Шевроле круз  ', 'Шевроле '),
-(15, 0, 'Mazda', '1212211', '222222');
+INSERT INTO `category` (`id`, `parent_id`, `name`, `keywords`, `description`, `img`) VALUES
+(1, 0, 'BMW', '121', '21412412', ''),
+(2, 0, 'Mersedes-Benz', NULL, NULL, ''),
+(3, 0, 'Chevrolet', NULL, NULL, ''),
+(6, 0, 'Audi', NULL, NULL, ''),
+(8, 1, '3-series', '1111', '222222', ''),
+(9, 1, '5-series', NULL, NULL, ''),
+(10, 2, 'c-class', NULL, NULL, ''),
+(12, 2, 'e-class', NULL, NULL, ''),
+(14, 3, 'Cruze', 'Шевроле круз  ', 'Шевроле ', ''),
+(15, 0, 'Mazda', '1212211', '222222', '');
 
 -- --------------------------------------------------------
 
@@ -66,6 +67,21 @@ CREATE TABLE `image` (
   `urlAlias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп даних таблиці `image`
+--
+
+INSERT INTO `image` (`id`, `filePath`, `itemId`, `isMain`, `modelName`, `urlAlias`, `name`) VALUES
+(1, 'Products/Product1/e24e8a.jpg', 1, 1, 'Product', 'd1f766c9e3-1', ''),
+(4, 'Products/Product6/3193b6.jpg', 6, 1, 'Product', '2d48e202a6-1', ''),
+(5, 'Products/Product2/e87a07.jpg', 2, 0, 'Product', 'a0bb47f9c3-3', ''),
+(6, 'Products/Product2/da30a9.jpg', 2, 0, 'Product', 'fa2399785c-4', ''),
+(7, 'Products/Product2/358481.jpg', 2, 0, 'Product', '3bf5f74f93-5', ''),
+(8, 'Products/Product2/7bd8a2.jpg', 2, 0, 'Product', '3236c2a99f-2', ''),
+(9, 'Products/Product2/684fbb.jpg', 2, 1, 'Product', '2e2bf67f84-1', ''),
+(10, 'Products/Product5/36c13a.jpg', 5, 1, 'Product', 'd490361eb9-1', ''),
+(11, 'Categories/Category1/9c1cbd.jpg', 1, 1, 'Category', 'be80d2685b-1', '');
 
 -- --------------------------------------------------------
 
@@ -339,12 +355,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `name`, `content`, `price`, `old_price`, `keywords`, `description`, `img`, `new`, `sale`, `hits`, `top`) VALUES
-(1, 10, 'C 250', '<p><strong>Двух литровый</strong>, турбовый мотор. Который разгоняет автомобиль с нуля до 100км/ч всего за 7.8 секунд</p>\r\n\r\n<p><iframe frameborder=\"0\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/lX0TPbCSAbM?start=10\" title=\"YouTube video player\" width=\"560\"></iframe></p>\r\n', 31000, 35000, '', '', 'С 250.png', '1', '0', '0', '1'),
+(1, 10, 'C 250', '<p><strong>Двух литровый</strong>, турбовый мотор. Который разгоняет автомобиль с нуля до 100км/ч всего за 7.8 секунд</p>\r\n\r\n<p><iframe frameborder=\"0\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/lX0TPbCSAbM?start=10\" title=\"YouTube video player\" width=\"560\"></iframe></p>\r\n', 31000, 35002, '', '', 'С 250.png', '1', '1', '0', '1'),
 (2, 10, 'C 180 ', '<p>Динамичный автомобиль</p>\r\n', 25000, 1222220, '', '', 'no-image.png', '0', '1', '0', '0'),
 (3, 12, 'Е 200', '<p>Крутая тачка</p>\r\n', 40000, 42000, '', '', 'E 200.png', '1', '0', '0', '0'),
-(4, 14, 'Сruze', '<p>Нормальный автомобиль</p>\r\n', 10000, 0, '', '', 'Cruze.png', '1', '1', '1', '0'),
-(5, 6, 'А4', 'Очень комфортаня машина ', 23000, 28000, NULL, NULL, 'A4.png', '1', '0', '1', '0'),
-(6, 10, 'C 300', 'Очень хороший автомобиль ', 240000, 0, NULL, NULL, 'no-image.png', '0', '1', '1', '0'),
+(4, 14, 'Сruze', '<p>Нормальный автомобиль</p>\n\n<p>&nbsp;</p>\n\n<p><iframe frameborder=\"0\" height=\"480\" src=\"https://www.youtube.com/embed/eGrRiVrqnjU\" title=\"YouTube video player\" width=\"650\"></iframe></p>\n', 10000, 15000, '', '', 'Cruze.png', '1', '1', '1', '0'),
+(5, 6, 'А4', '<p>Очень комфортаня машина</p>\r\n', 23000, 28000, '', '', 'A4.png', '1', '0', '1', '0'),
+(6, 10, 'C 300', '<p>Очень хороший автомобиль</p>\r\n', 24000, 28000, '', '', 'no-image.png', '0', '1', '1', '0'),
 (7, 8, 'e 46', ' Nhzkzckxmzc cvkm  ag ds g ', 120000, 0, NULL, NULL, 'e46.png', '1', '0', '0', '0'),
 (8, 6, 'А3', NULL, 0, 0, NULL, NULL, 'no-image.png', '0', '0', '0', '0'),
 (9, 10, 'С 220', NULL, 0, 0, NULL, NULL, 'no-image.png', '0', '0', '0', '0'),
@@ -352,7 +368,7 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `content`, `price`, `old_pri
 (11, 10, 'sd', '', 0, 0, '', '', 'no-image.png', '0', '0', '0', '0'),
 (12, 10, 'ццц', NULL, 0, 0, NULL, NULL, 'no-image.png', '0', '1', '0', '0'),
 (13, 12, 'E 250', 'dsfdsfdsfdsfdsfds', 20000, 15000, NULL, NULL, 'E 250.png', '1', '0', '0', '0'),
-(14, 6, 'A5', '<h1><em><strong>Купи не пожалеешь !!!!</strong></em></h1>\r\n', 20000, 25000, '', '', 'no-image.png', '0', '0', '0', '0'),
+(14, 6, 'A5', '<h1><em><strong>Купи не пожалеешь !!!!</strong></em></h1>\n', 20000, 25000, '', '', 'no-image.png', '0', '0', '0', '0'),
 (15, 9, 'M5', '', 25000, 30000, '', '', 'no-image.png', '0', '0', '0', '0');
 
 -- --------------------------------------------------------
@@ -373,7 +389,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `auth_key`) VALUES
-(1, 'admin', '$2y$13$D7und5sejZ3IyGkZ5DaESuPqA6JhHdzx9ONOiVp9yhbsCVtMDf.Qi', '-3nm5C2XE9Yi5q4MupzxO90YWBIhXWSK');
+(1, 'admin', '$2y$13$D7und5sejZ3IyGkZ5DaESuPqA6JhHdzx9ONOiVp9yhbsCVtMDf.Qi', 'kovA7iAZhUc_pN2tG8T8WhhemgLMFX-E');
 
 --
 -- Індекси збережених таблиць
@@ -435,7 +451,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблиці `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблиці `order`
@@ -453,7 +469,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT для таблиці `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблиці `user`

@@ -16,6 +16,15 @@ use Yii;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    public $image;
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -36,6 +45,7 @@ class Category extends \yii\db\ActiveRecord
             [['parent_id'], 'integer'],
             [['name'], 'required'],
             [['name', 'keywords', 'description'], 'string', 'max' => 255],
+            [['image'], 'file',  'extensions' => 'png, jpg'],
         ];
     }
 
@@ -50,6 +60,18 @@ class Category extends \yii\db\ActiveRecord
             'name' => 'Название',
             'keywords' => 'Ключевые слова',
             'description' => 'Мета Описание',
+            'image' => 'Фото',
         ];
+    }
+    public function upload(){
+        if($this->validate()){
+            $path = 'upload/store/'. $this->image->baseName .'.'.$this->image->extension;
+            $this->image->saveAs($path);
+            $this->attachImage($path);
+            @unlink($path);
+            return true;
+        }else{
+            return false;
+        }
     }
 }

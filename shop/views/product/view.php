@@ -24,6 +24,10 @@ use yii\widgets\LinkPager;
     </div>
 
 <!-- breadcrumb-area-end -->
+<?php 
+    $mainImg = $product->getImage();
+    $gallery = $product->getImages();
+?>
 
 <!-- shop-area start -->
 <section class="shop-details-area pt-100 pb-100">
@@ -34,7 +38,7 @@ use yii\widgets\LinkPager;
                     <div class="tab-content" id="myTabContentpro">
                         <div class="tab-pane fade show active" id="home" role="tabpanel">
                             <div class="product-large-img">
-                                <?= Html::img("@web/img/products/{$product->img}",['alt' => $product->name])?>
+                                <?= Html::img($mainImg->getUrl(),['alt' => $product->name])?>
                             </div>
                         </div>
                         <div class="sale-tag">
@@ -57,21 +61,18 @@ use yii\widgets\LinkPager;
                         </div>
                     </div>
                 </div>
-                <div class="shop-thumb-tab mb-30">
+                <div class="shop-thumb-tab mb-30">  
                     <ul class="nav" id="myTab2" role="tablist">
+                    <?php $count=count($gallery); $i=0; foreach($gallery as $img): ?>
+                        <?php if($i %3 == 0): ?>
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-selected="true"><img
-                                    src="/img/product/pro14.jpg" alt=""> </a>
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-selected="true">
+                            <?= Html::img($img->getUrl('405x440'),['alt' => $product->name])?></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-selected="false"><img
-                                    src="/img/product/pro15.jpg" alt=""></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab2" data-toggle="tab" href="#profile1" role="tab" aria-selected="false"><img
-                                    src="/img/product/pro16.jpg" alt=""></a>
-                        </li>
+                        <?php endif; ?>
+                        <?php $i++;$i==$count; endforeach; ?>
                     </ul>
+                    
                 </div>
             </div>
             <div class="col-xl-6 col-lg-8">
@@ -294,10 +295,11 @@ use yii\widgets\LinkPager;
                 <?php if($i % 3 == 0): ?> 
                 <div class=" pro<?php if($i == 0) echo '-item' ?>">
                 <?php endif; ?>
+                <?php $mainImg=$n->getImage() ?>
                     <div class="product-wrapper">
                         <div class="product-img mb-25">
                             <a href="<?= yii\helpers\Url::to(['product/view','id'=>$n->id]) ?>">
-                            <?= Html::img("@web/img/products/{$n->img}",['alt' => $n->name])?>
+                            <?= Html::img($mainImg->getUrl(),['alt' => $n->name])?>
                                 <img class="secondary-img" src="/img/product/pro5.jpg" alt="">
                             </a>
                             <div class="product-action text-center">
